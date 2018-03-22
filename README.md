@@ -22,13 +22,16 @@ just to avoid commiting any secrets to source control or you can define them wit
 
 ```
 cd terraform/infra/
+vi variables.tf   # replace the key name with your key so that you can ssh to the instance
 terrafrom init
 terrafrom plan
 terrafrom apply
 ```
 
-you can then executue curl --header "Accept: application/json" http://127.0.0.1:5000/api/v1/countries?name=Spain  or any of the fouce countries mentioned in the task or you can replace the localhost with the instance eip address coming out from terrafrom output.  
+terraform output will give you your instance public ip
+
 
 ```
-$ curl --header "Accept: application/json" http://<EIP>:5000/api/v1/countries?name=Spain
+$ ssh -i <key.pem> ec2-user@<EIP>
+$ curl --header "Accept: application/json" http://127.0.0.1:5000/api/v1/countries?name=Spain
 ```
