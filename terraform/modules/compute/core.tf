@@ -11,10 +11,6 @@ resource "aws_instance" "app_instances" {
 
   user_data = <<-EOF
         #!/bin/bash
-        # apt-get -y update
-        # apt-get install build-essential checkinstall
-        # apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-
         yum -y update
       	yum -y install epel-release
         echo "Hello, Utas" > index.html
@@ -22,7 +18,7 @@ resource "aws_instance" "app_instances" {
         pip install Flask
         pip install --upgrade pip
         git clone https://github.com/abdelhegazi/basic-flask-python.git /app/
-        /usr/bin/sh /app/app.py &
+        /usr/bin/python /app/app/app.py &
         EOF
 
   tags {

@@ -37,7 +37,7 @@ variable "tf_app_instances_count" {
 ## change this  if to your key's name to be able to ssh to the instance
 ##
 variable "tf_key_name" {
-    default = "ahegazi"
+    default = "abdel"
 }
 
 variable "tf_utas_sg1_name" {
