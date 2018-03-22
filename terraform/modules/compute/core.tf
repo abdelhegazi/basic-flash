@@ -16,9 +16,11 @@ resource "aws_instance" "app_instances" {
         # apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 
         yum -y update
-      	yum install epel-release
-        echo "Hello, Ubertas" > index.html
+      	yum -y install epel-release
+        echo "Hello, Utas" > index.html
         yum -y install python-pip python-dev curl git net-tools
+        pip install Flask
+        pip install --upgrade pip
         git clone https://github.com/abdelhegazi/basic-flask-python.git /app/
         /usr/bin/sh /app/app.py &
         EOF
