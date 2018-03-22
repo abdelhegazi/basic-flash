@@ -1,0 +1,27 @@
+As part of the technical stage of our recruitment we set a competency test for all candidates.
+  
+
+A lot of our solutions are bespoke so we may be asked to write a custom solution on top of what AWS provides as a service. We also provision all of our AWS infrastructure using Terraform. With that in mind the technical challenge is to write a small API and then provision the application with Terraform using EC2/ECS or whatever other solution you prefer.
+
+ 
+
+The Challenge...
+
+- In a language of your choice, create a REST API which displays ISO codes for a given country, for example:
+    curl --header "Accept: application/json" http://127.0.0.1:5000/api/v1/countries?name=Spain - this would return “ES”
+    curl --header "Accept: application/json" http://127.0.0.1:5000/api/v1/countries?name=UK  - this would return “GB”
+
+- Repeat for four countries.
+        UK returns GB
+        Spain returns ES
+        Ireland returns IE
+        France returns FR
+
+- Once the application has been written, package this up into a re-deployable app. This could be a 
+  container and run on ECS, or it could just run on an EC2 instance and installed via user data.
+- Use Terraform https://www.terraform.io/ to deploy the infrastructure for which this application relies on, also bootstrap 
+  the application onto the resource. Doesn’t matter if it’s ECS or EC2 or even Lambda. What I’m looking for is a way to check 
+  out your code and run terraform plan/terraform apply. This will deploy everything I require to have a functional application.
+- I should be able to test the application is up and running via curl as shown in the example above. Ideally using the 
+  private/public IP address of the instance/container service.
+- Document how to deploy/use the application.
