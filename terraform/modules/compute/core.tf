@@ -9,17 +9,6 @@ resource "aws_instance" "app_instances" {
   subnet_id              = "${element(split(",", var.mod_pubsn_ids), count.index)}"
   monitoring             = true
   user_data              = "${data.template_file.user_data.rendered}"
-  # user_data = <<-EOF
-  #             #!/bin/sh
-  #             yum -y update
-  #             yum -y install epel-release
-  #             echo "Hello, Utas" > index.html
-  #             yum -y install python-pip python-dev curl git net-tools
-  #             pip install Flask
-  #             pip install --upgrade pip
-  #             git clone https://github.com/abdelhegazi/basic-flask-python.git /app/
-  #             nohub /usr/bin/python /app/app/app.py &
-  #             EOF
 
   tags {
     Name           = "app_utas_instance_${count.index}"
