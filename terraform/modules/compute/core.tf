@@ -4,7 +4,7 @@ resource "aws_instance" "app_instances" {
   ami                    = "${var.mod_ami}"
   instance_type          = "${var.mod_instance_type}"
   availability_zone      = "${element(split(",", var.mod_azs), count.index)}"
-#  key_name               = "${var.mod_key_name}"
+  key_name               = "${var.mod_key_name}"
   vpc_security_group_ids = ["${aws_security_group.app_instance_sg1.id}"]
   subnet_id              = "${element(split(",", var.mod_pubsn_ids), count.index)}"
   monitoring             = true
